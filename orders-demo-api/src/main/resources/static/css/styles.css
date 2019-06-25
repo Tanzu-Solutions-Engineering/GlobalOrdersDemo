@@ -1,0 +1,66 @@
+.row {
+	display: flex;
+}
+
+.column1 {
+	flex: 20%;
+}
+
+.column2 {
+	flex: 80%;
+}
+
+.container {
+	margin-right: 2em;
+	border: 2px inset menu;
+	background: #eeeeee;
+}
+
+th {
+  font-size: 10pt;
+  text-align: left;
+  width: 20%;
+}
+
+td {
+	font-size: 10pt;
+	width: 40%;
+}
+
+h1 {
+	font-size: 12pt;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+#breaker {
+  padding: 20px;
+}
+
+#chartdiv {
+	width: 98%;
+	border: 1px solid black;
+	margin: 20px;
+	padding: 20px;
+	height: 500px;
+}
+
+#chartTitle {
+	font-size: 20pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.footer-left {
+	padding-top: 8px;
+	text-align: left;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.footer-right {
+	text-align: right;
+	vertical-align: middle;
+	display: inline-block;
+	float: right;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Pivotal Cloud Foundry Microservices Demo</title>
+<meta http-equiv="Cache-Control"
+	content="no-store, no-cache, must-revalidate, max-age=0">
+
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link rel="stylesheet" href="/css/styles.css" />
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+
+<script src="//www.amcharts.com/lib/4/core.js"></script>
+<script src="//www.amcharts.com/lib/4/maps.js"></script>
+<script src="//www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
+
+<script src="/js/maps.js"></script>
+<script src="/js/ui-updates.js"></script>
+<script src="/js/button-handlers.js"></script>
+
+<script lang="javascript">
+	//<![CDATA[ 		
+	/**
+	 * Create an object to hold dynamic configuration and global variables
+	 */
+	var holder = {};
+	holder.config = {};
+	holder.generatorStreaming = false;
+	holder.dataMap = false;
+	holder.config.monitorHost = '[[${monitorHost}]]';
+	holder.config.generatorHost = '[[${generatorHost}]]';
+	
+	/**
+	 * Setup the map and start the background tasks once the window has loaded
+	 */
+	$( function() {
+		initialiseMap(holder);
+		setTimeout(updateHistogram, 1000, holder);
+		setTimeout(updateGeneratorStatus, 1000, holder);
+		setTimeout(updateMonitorStatus, 1000, holder);
+	});;
+	//]]>
+</script>
+
+</head>
+<body>
+	<!-- One container per microservice to show status and allow it to be killed etc -->
+
+  <h1>Microservices</h1>
+	<div class="row">
+		<div class="column1">
+			<h1>Order Generator</h1>
+			<table>
+			<tr><th>Name</th><td id="generator-name">[[${generatorHost}]]</td></tr>
+			<tr><th>Status</th><td id="generator-running"></td><td><input type="button" onclick="killGenerator(holder);" value="Kill" /></td></tr>
+			<tr><th>Streaming</th><td id="generator-streaming"></td><td><input type="button" id="generator-toggle" onclick="toggleGenerator(holder);" value="Stop" /></td></tr>
+			<tr><th>Sent</th><td id="generator-sent"></td></tr>
+			<tr><th>RabbitMQ</th><td id="generator-rmq"></td></tr>
+			</table>
+			<h1>Order Monitor</h1>
+			<table>
+				<tr><th>Name</th><td id="monitor-name">[[${monitorHost}]]</td></tr>
+				<tr><th>Application</th><td id="monitor-running"></td><td><input type="button" onclick="killMonitor(holder);" value="Kill" /></td></tr>
+				<tr><th>Processed</th><td id="monitor-processed"></td></tr>
+				<tr><th>RabbitMQ</th><td id="monitor-rmq"></td></tr>
+			</table>
+		</div>
+
+		<div class="column2">
+			<div id="chartTitle">
+				Orders density by country
+			</div>
+		
+			<div id="chartdiv" style="height: 400"></div>
+		
+			<div class="container">
+				<div class="footer">
+					<span class="footer-left">©&nbsp;2019 Pivotal Software, Inc.</span>
+					<span class="footer-right">
+						<img src="/img/PoweredByPivotal.png" alt="Powered By Pivotal ">
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+</html>
