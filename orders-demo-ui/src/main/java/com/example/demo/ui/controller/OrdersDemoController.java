@@ -1,4 +1,4 @@
-package com.example.demo.api.controller;
+package com.example.demo.ui.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
