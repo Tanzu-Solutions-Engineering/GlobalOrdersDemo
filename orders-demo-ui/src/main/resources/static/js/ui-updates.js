@@ -1,6 +1,6 @@
 function updateGeneratorStatus(holder) {
 	
-	$.getJSON("http://" + holder.config.generatorHost + "/status")
+	$.getJSON("https://" + holder.config.generatorHost + "/status")
 		.done(	
 			function(data) {
 				$("#generator-running").text(
@@ -33,7 +33,7 @@ function updateGeneratorStatus(holder) {
 
 
 function updateMonitorStatus(holder) {
-	$.getJSON("http://" + holder.config.monitorHost + "/status")
+	$.getJSON("https://" + holder.config.monitorHost + "/status")
 			.done(
 					function(data) {
 						$("#monitor-running").text("Running");

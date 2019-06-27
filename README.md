@@ -150,3 +150,9 @@ Metrics should now be visible in the app's log stream
 And once PCF Metrics has caught up you should e able to view and add available metrics in the PCF Metrics UI.
 It may take a few minutes before the new metrics become available.
 
+# Traces
+
+The UI app calls the monitor app to get the latest heatmap. It is possible to see this interaction in PCF Metrics since the project has spring-cloud-sleuth enabled for tracing.
+
+Go to a log entry in PCF Metrics and click on the 'View in Trace Explorer' icon.
+

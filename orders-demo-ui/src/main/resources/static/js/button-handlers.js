@@ -2,12 +2,12 @@
 function toggleGenerator(holder) {
 	
 	if (holder.generatorStreaming) {
-		$.getJSON("http://" + holder.config.generatorHost + "/stopStream",
+		$.getJSON("https://" + holder.config.generatorHost + "/stopStream",
 				function(data) {
 					//
 				});
 	} else {
-		$.getJSON("http://" + holder.config.generatorHost + "/startStream",
+		$.getJSON("https://" + holder.config.generatorHost + "/startStream",
 				function(data) {
 					//
 				});
@@ -15,13 +15,13 @@ function toggleGenerator(holder) {
 }
 
 function killGenerator(holder) {
-	$.getJSON("http://" + holder.config.generatorHost + "/killApp", function(data) {
+	$.getJSON("https://" + holder.config.generatorHost + "/killApp", function(data) {
 		//
 	});
 }
 
 function killMonitor(holder) {
-	$.getJSON("http://" + holder.config.monitorHost + "/killApp", function(data) {
+	$.getJSON("https://" + holder.config.monitorHost + "/killApp", function(data) {
 		//
 	});
 }

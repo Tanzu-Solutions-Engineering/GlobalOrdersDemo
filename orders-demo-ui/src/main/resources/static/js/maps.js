@@ -51,7 +51,7 @@ function initialiseMap(holder) {
 
 function updateHistogram(holder) {
 	
-	$.getJSON("http://" + holder.config.monitorHost + "/getHeatMap").done(function(data) {
+	$.getJSON("/getHeatMap").done(function(data) {
 
 		// Populate the data map if needed to speed up the updates
 		if (holder.dataMap == false) {
